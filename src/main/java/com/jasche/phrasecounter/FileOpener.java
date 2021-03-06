@@ -33,14 +33,21 @@ public class FileOpener {
     }
 
     /**
-     *
-     * @return
+     * Create scanner to read from filename.
+     * Passes this scanner to readWords.
+     * @return  List of all words from filename
      */
     public List<String> readFile() throws FileNotFoundException{
         Scanner scanner = new Scanner(new File(filename));
         return readWords(scanner);
     }
 
+    /**
+     * Read word-by-word from scanner until no more words remain.
+     * Add each word to the linked list fileWords.
+     * @param scanner   scanner, expected to read filename after being passed from readFile
+     * @return          linked list of words from filename as a List of Strings
+     */
     public List<String> readWords(Scanner scanner){
         List<String> fileWords = new LinkedList<>();
         while(scanner.hasNext()){

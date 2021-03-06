@@ -2,11 +2,13 @@ package com.jasche.phrasecounter;
 
 import java.io.FileNotFoundException;
 
+import static com.jasche.phrasecounter.MyLogger.LOGGER;
+
 public class PhraseCounter {
 
     public static void main(String[] args) {
         if(args.length != 1){
-            System.err.println("Must input file name");
+            LOGGER.severe("Must input file name");
             return;
         }
 
@@ -14,8 +16,9 @@ public class PhraseCounter {
         try {
             file.readFile();
         } catch (FileNotFoundException e){
-            System.err.println("File not found.");
+            LOGGER.severe("File not found.");
         }
+
 
     }
 }
