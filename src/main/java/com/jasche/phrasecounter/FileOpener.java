@@ -20,7 +20,7 @@ public class FileOpener {
     }
 
     /**
-     * Get and set the current value of filename.
+     * Get the current value of filename.
      * Used for testing.
      * @return  path to the file to be opened
      */
@@ -28,6 +28,10 @@ public class FileOpener {
         return filename;
     }
 
+    /**
+     * Set the current value of filename.
+     * @param filename path to the file to be opened
+     */
     public void setFilename(String filename) {
         this.filename = filename;
     }
@@ -35,7 +39,7 @@ public class FileOpener {
     /**
      * Create scanner to read from filename.
      * Passes this scanner to readWords.
-     * @return  List of all words from filename
+     * @return  list of all words from filename
      */
     public List<String> readFile() throws FileNotFoundException{
         Scanner scanner = new Scanner(new File(filename));
