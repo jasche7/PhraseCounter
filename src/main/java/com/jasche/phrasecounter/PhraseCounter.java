@@ -10,7 +10,7 @@ public class PhraseCounter {
 
     public static void main(String[] args) {
         if(args.length != 1){
-            LOGGER.severe("Must input file name");
+            LOGGER.severe("Usage: ./PhraseCounter <filepath>");
             return;
         }
 
