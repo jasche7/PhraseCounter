@@ -1,13 +1,7 @@
 package com.jasche.phrasecounter;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-/**
- * From Carter Page at https://stackoverflow.com/a/2581754
- */
 public class MapUtil {
 
     private MapUtil(){
@@ -15,6 +9,8 @@ public class MapUtil {
     }
 
     /**
+     * From Carter Page at https://stackoverflow.com/a/2581754
+     *
      * Creates list of map entries from the map parameter.
      * Sorts the list by value in ascending order.
      * Creates a new linked hash map containing the list entries.
@@ -34,5 +30,22 @@ public class MapUtil {
         }
 
         return result;
+    }
+
+    /**
+     * Creates list iterator for the entrySet of the generic sortedMap param.
+     * List iterator starts at the tail and prints out each entry until the head to standard output.
+     * @param sortedMap map with generic typed key and value
+     * @param <K>   generic type for sortedMap key
+     * @param <V>   generic type for sortedMap value
+     */
+    public static <K, V extends Comparable<? super V>> void printSortedMap(Map<K, V> sortedMap){
+        ListIterator<Map.Entry<K, V>> mapIterator =
+                new ArrayList<>(sortedMap.entrySet()).listIterator(sortedMap.size());
+
+        while (mapIterator.hasPrevious()) {
+            Map.Entry<K, V> entry = mapIterator.previous();
+            System.out.println(entry.getKey() + ":" + entry.getValue());
+        }
     }
 }

@@ -10,18 +10,19 @@ public class PhraseCounter {
 
     public static void main(String[] args) {
         if(args.length != 1){
-            LOGGER.severe("Usage: ./PhraseCounter <filepath>");
+            LOGGER.severe("Enter filepath as argument");
             return;
         }
 
         FileOpener file = new FileOpener(args[0]);
         List<String> wordsList;
         try {
+            //file -> word list -> word map -> sorted word map -> print
             wordsList = file.readFile();
             WordMapper map = new WordMapper(wordsList);
             Map<String, Integer> wordsMap = map.mapWordCount();
             Map<String, Integer> sortedWordsMap = MapUtil.sortByValue(wordsMap);
-            PrintMap.printSortedMap(sortedWordsMap);
+            MapUtil.printSortedMap(sortedWordsMap);
 
             String logWords = "Words: " + wordsList.toString();
             String logMap = "Map: " + wordsMap.entrySet().toString();
