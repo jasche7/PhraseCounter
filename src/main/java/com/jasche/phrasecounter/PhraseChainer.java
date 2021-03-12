@@ -13,9 +13,11 @@ public class PhraseChainer {
     }
 
     /**
-     *
-     * @param wordsList
-     * @return
+     * Take list of Strings as input, then use a nested for loop to
+     * add every sublist in the list, concatenated, to a new list.
+     * @param wordsList list of Strings
+     * @return  list containing all sublists from wordsList, each
+     *          concatenated into a single string
      */
     public static List<String> chainWords(List<String> wordsList){
         List<String> phraseList = new LinkedList<>();
