@@ -22,7 +22,8 @@ public class PhraseCounter {
             file -> word list -> phrase list -> phrase map -> sorted phrase map -> print
             */
             wordsList = file.readFile();
-            PhraseMapper map = new PhraseMapper(wordsList);
+            List<String> phrasesList = PhraseChainer.chainWords(wordsList);
+            PhraseMapper map = new PhraseMapper(phrasesList);
             Map<String, Integer> phraseMap = map.mapPhraseCount();
             Map<String, Integer> sortedPhraseMap = MapUtil.sortByValue(phraseMap);
             MapUtil.printSortedMap(sortedPhraseMap);
@@ -31,9 +32,11 @@ public class PhraseCounter {
             Log each intermediate step to fine level.
              */
             String logWords = "Words: " + wordsList.toString();
+            String logPhrases = "Phrases: " + phrasesList.toString();
             String logMap = "Map: " + phraseMap.entrySet().toString();
             String logSortedMap = "Sorted Map: " + sortedPhraseMap.entrySet().toString();
             LOGGER.fine(logWords);
+            LOGGER.fine(logPhrases);
             LOGGER.fine(logMap);
             LOGGER.fine(logSortedMap);
         } catch (FileNotFoundException e){
