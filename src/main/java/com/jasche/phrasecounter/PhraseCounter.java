@@ -17,16 +17,22 @@ public class PhraseCounter {
         FileOpener file = new FileOpener(args[0]);
         List<String> wordsList;
         try {
-            //file -> word list -> word map -> sorted word map -> print
+            /*
+            Process file input in the following sequence:
+            file -> word list -> phrase list -> phrase map -> sorted phrase map -> print
+            */
             wordsList = file.readFile();
-            WordMapper map = new WordMapper(wordsList);
-            Map<String, Integer> wordsMap = map.mapWordCount();
-            Map<String, Integer> sortedWordsMap = MapUtil.sortByValue(wordsMap);
-            MapUtil.printSortedMap(sortedWordsMap);
+            PhraseMapper map = new PhraseMapper(wordsList);
+            Map<String, Integer> phraseMap = map.mapPhraseCount();
+            Map<String, Integer> sortedPhraseMap = MapUtil.sortByValue(phraseMap);
+            MapUtil.printSortedMap(sortedPhraseMap);
 
+            /*
+            Log each intermediate step to fine level.
+             */
             String logWords = "Words: " + wordsList.toString();
-            String logMap = "Map: " + wordsMap.entrySet().toString();
-            String logSortedMap = "Sorted Map: " + sortedWordsMap.entrySet().toString();
+            String logMap = "Map: " + phraseMap.entrySet().toString();
+            String logSortedMap = "Sorted Map: " + sortedPhraseMap.entrySet().toString();
             LOGGER.fine(logWords);
             LOGGER.fine(logMap);
             LOGGER.fine(logSortedMap);

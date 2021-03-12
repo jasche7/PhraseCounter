@@ -4,6 +4,9 @@ import java.util.*;
 
 public class MapUtil {
 
+    /**
+     * Utility class should not be instantiated.
+     */
     private MapUtil(){
         throw new IllegalStateException("Utility class");
     }
