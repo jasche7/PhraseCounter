@@ -10,32 +10,32 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class WordMapperTest {
+class PhraseMapperTest {
 
-    private WordMapper testMapper;
+    private PhraseMapper testMapper;
 
     @BeforeEach
     void init(){
-        testMapper = new WordMapper(Collections.emptyList());
+        testMapper = new PhraseMapper(Collections.emptyList());
     }
 
     @Test
     void canGetWords(){
-        assertEquals(Collections.emptyList(), testMapper.getWords());
+        assertEquals(Collections.emptyList(), testMapper.getPhrases());
     }
 
     @Test
     void canSetWords(){
         List<String> testList = List.of("test");
-        testMapper.setWords(testList);
+        testMapper.setPhrases(testList);
 
-        assertEquals(List.of("test"), testMapper.getWords());
+        assertEquals(List.of("test"), testMapper.getPhrases());
     }
 
     @Test
     void canMapWords(){
         List<String> testList = List.of("a", "test", "test", "this", "is", "a", "test");
-        testMapper.setWords(testList);
+        testMapper.setPhrases(testList);
 
         Map<String, Integer> testMap = new HashMap<>();
         testMap.put("test", 3);
@@ -43,6 +43,6 @@ class WordMapperTest {
         testMap.put("this", 1);
         testMap.put("is", 1);
 
-        assertEquals(testMap, testMapper.mapWordCount());
+        assertEquals(testMap, testMapper.mapPhraseCount());
     }
 }

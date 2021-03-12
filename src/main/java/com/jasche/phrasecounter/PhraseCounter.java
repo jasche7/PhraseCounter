@@ -19,8 +19,8 @@ public class PhraseCounter {
         try {
             //file -> word list -> word map -> sorted word map -> print
             wordsList = file.readFile();
-            WordMapper map = new WordMapper(wordsList);
-            Map<String, Integer> wordsMap = map.mapWordCount();
+            PhraseMapper map = new PhraseMapper(wordsList);
+            Map<String, Integer> wordsMap = map.mapPhraseCount();
             Map<String, Integer> sortedWordsMap = MapUtil.sortByValue(wordsMap);
             MapUtil.printSortedMap(sortedWordsMap);
 
