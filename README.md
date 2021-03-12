@@ -3,11 +3,11 @@ Java app that counts occurrences of words in a file and calculates occurrences o
 
 ## Project Status
 Current milestone:
-Command line tool that takes a single file path as an argument. Prints out single word count.
+Command line tool that takes a single file path as an argument. Prints out phrase count.
 Has basic Maven usage, including continuous integration with Github Actions.
 
 Next milestone:
-Count phrases as originally intended, rather than single words.
+Desperately needs configuration options to limit output. Unfiltered output is excessive.
 
 Endgoal:
 With improved UI, counts phrases (consecutive words) instead of words and has customizable options for computing output.
@@ -16,7 +16,7 @@ Possibly create new branch to turn into single page webapp.
 ## Project Screenshot(s)
 Sample output:
 
-<img width="316" alt="Screen Shot 2021-03-10 at 11 05 15 PM" src="https://user-images.githubusercontent.com/25709225/110748869-328cf000-81f5-11eb-8c53-37df0eeaef14.png">
+<img width="332" alt="Screen Shot 2021-03-11 at 11 41 31 PM" src="https://user-images.githubusercontent.com/25709225/110908406-9da4f800-82c3-11eb-96de-a81088ff1cc3.png">
 
 
 ## Usage
