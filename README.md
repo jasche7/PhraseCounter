@@ -1,5 +1,5 @@
 # PhraseCounter
-Java app that counts occurrences of words in a file and calculates occurrences of words.
+Java app that counts occurrences of phrases in a file.
 
 ## Project Status
 Current milestone:
