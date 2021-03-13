@@ -8,32 +8,11 @@ import java.util.Scanner;
 
 public class FileOpener {
 
-    private String filename;
-
     /**
-     * Expects to receive a filename from PhraseCounter,
-     * which will later be opened and read from word-by-word.
-     * @param filename  path to the file to be opened
+     * Utility class should not be instantiated.
      */
-    public FileOpener(String filename){
-        setFilename(filename);
-    }
-
-    /**
-     * Get the current value of filename.
-     * Used for testing.
-     * @return  path to the file to be opened
-     */
-    public String getFilename() {
-        return filename;
-    }
-
-    /**
-     * Set the current value of filename.
-     * @param filename path to the file to be opened
-     */
-    public void setFilename(String filename) {
-        this.filename = filename;
+    private FileOpener(){
+        throw new IllegalStateException("Utility class");
     }
 
     /**
@@ -41,7 +20,7 @@ public class FileOpener {
      * Passes this scanner to readWords.
      * @return  list of all words from filename
      */
-    public List<String> readFile() throws FileNotFoundException{
+    public static List<String> readFile(String filename) throws FileNotFoundException{
         Scanner scanner = new Scanner(new File(filename));
         return readWords(scanner);
     }
@@ -52,7 +31,7 @@ public class FileOpener {
      * @param scanner   scanner, expected to read filename after being passed from readFile
      * @return          linked list of words from filename as a List of Strings
      */
-    public List<String> readWords(Scanner scanner){
+    public static List<String> readWords(Scanner scanner){
         List<String> fileWords = new LinkedList<>();
         while(scanner.hasNext()){
             String word = scanner.next();

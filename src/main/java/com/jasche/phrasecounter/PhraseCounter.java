@@ -22,14 +22,13 @@ public class PhraseCounter {
                 maxPhraseLength = Integer.parseInt(args[2]);
             }
         }
-        FileOpener file = new FileOpener(args[0]);
-        List<String> wordsList;
+
         try {
             /*
             Process file input in the following sequence:
             file -> word list -> phrase list -> phrase map -> sorted phrase map -> print
             */
-            wordsList = file.readFile();
+            List<String> wordsList = FileOpener.readFile(args[0]);
             List<String> phrasesList = PhraseChainer.chainWords(wordsList, maxPhraseLength);
             Map<String, Integer> phraseMap = PhraseMapper.mapPhraseCount(phrasesList, minOccurrences);
             Map<String, Integer> sortedPhraseMap = MapUtil.sortByValue(phraseMap);
