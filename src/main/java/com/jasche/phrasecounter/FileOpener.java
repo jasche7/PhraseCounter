@@ -18,7 +18,9 @@ public class FileOpener {
     /**
      * Create scanner to read from filename.
      * Passes this scanner to readWords.
+     * @param filename filepath for file to open
      * @return  list of all words from filename
+     * @throws FileNotFoundException    if filename is invalid
      */
     public static List<String> readFile(String filename) throws FileNotFoundException{
         Scanner scanner = new Scanner(new File(filename));
