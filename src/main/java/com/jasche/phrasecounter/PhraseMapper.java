@@ -33,11 +33,7 @@ public class PhraseMapper {
                 phraseMap.put(p, 1);
             }
         }
-        for(Map.Entry<String, Integer> e: phraseMap.entrySet()){
-            if(e.getValue() < minOccurrences){
-                phraseMap.remove(e.getKey());
-            }
-        }
+        phraseMap.entrySet().removeIf(entry -> entry.getValue() < minOccurrences);
         return phraseMap;
     }
 }

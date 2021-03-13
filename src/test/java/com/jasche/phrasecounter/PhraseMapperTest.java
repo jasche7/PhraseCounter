@@ -1,27 +1,54 @@
 package com.jasche.phrasecounter;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PhraseMapperTest {
 
+    private static List<String> testList;
+    private static Map<String, Integer> correctMap;
+
+    Map<String, Integer> generateTestMap(int minOccurrences){
+        return PhraseMapper.mapPhraseCount(testList, minOccurrences);
+    }
+
+    @BeforeAll
+    static void init(){
+        testList = List.of("a", "test", "test", "this", "is", "a", "test");
+        correctMap = new HashMap<>();
+        correctMap.put("test", 3);
+        correctMap.put("a", 2);
+        correctMap.put("this", 1);
+        correctMap.put("is", 1);
+    }
+
     @Test
     void canMapWords(){
-        List<String> testList = List.of("a", "test", "test", "this", "is", "a", "test");
+        assertEquals(correctMap, generateTestMap(0));
+    }
 
-        Map<String, Integer> testMap = new HashMap<>();
-        testMap.put("test", 3);
-        testMap.put("a", 2);
-        testMap.put("this", 1);
-        testMap.put("is", 1);
+    @Test
+    void canMapWordsMinLow(){
+        assertEquals(correctMap, generateTestMap(Integer.MIN_VALUE));
+    }
 
-        assertEquals(testMap, PhraseMapper.mapPhraseCount(testList,0));
+    @Test
+    void canMapWordsMin2(){
+        Map<String, Integer> testMap = generateTestMap(2);
+        assertAll(
+                () -> assertNull(testMap.get("this")),
+                () -> assertNull(testMap.get("is")),
+                () -> assertEquals(2, testMap.get("a")),
+                () -> assertEquals(3, testMap.get("test"))
+        );
+    }
+
+    @Test
+    void canMapWordsMinHigh(){
+        assertEquals(Collections.emptyMap(), generateTestMap(Integer.MAX_VALUE));
     }
 }

@@ -78,6 +78,12 @@ class PhraseChainerTest {
     }
 
     @Test
+    void canSetMaxPhraseLengthNegative(){
+        List<String> testPhrases = generateTestPhrases((Integer.MIN_VALUE));
+        assertEquals(Collections.emptyList(), testPhrases);
+    }
+
+    @Test
     void canSetMaxPhraseLength1(){
         List<String> testPhrases = generateTestPhrases(1);
         assertEquals(correctListForLength1, testPhrases);
@@ -91,7 +97,7 @@ class PhraseChainerTest {
 
     @Test
     void canSetMaxPhraseLengthHigh(){
-        List<String> testPhrases = generateTestPhrases(100);
+        List<String> testPhrases = generateTestPhrases(Integer.MAX_VALUE);
         assertEquals(correctList, testPhrases);
     }
 }
