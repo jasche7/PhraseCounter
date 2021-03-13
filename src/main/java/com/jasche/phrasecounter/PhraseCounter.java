@@ -31,8 +31,7 @@ public class PhraseCounter {
             */
             wordsList = file.readFile();
             List<String> phrasesList = PhraseChainer.chainWords(wordsList, maxPhraseLength);
-            PhraseMapper map = new PhraseMapper(phrasesList);
-            Map<String, Integer> phraseMap = map.mapPhraseCount(minOccurrences);
+            Map<String, Integer> phraseMap = PhraseMapper.mapPhraseCount(phrasesList, minOccurrences);
             Map<String, Integer> sortedPhraseMap = MapUtil.sortByValue(phraseMap);
             MapUtil.printSortedMap(sortedPhraseMap);
 

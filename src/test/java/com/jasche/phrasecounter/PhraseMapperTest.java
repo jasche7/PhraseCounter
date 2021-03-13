@@ -12,30 +12,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PhraseMapperTest {
 
-    private PhraseMapper testMapper;
-
-    @BeforeEach
-    void init(){
-        testMapper = new PhraseMapper(Collections.emptyList());
-    }
-
-    @Test
-    void canGetWords(){
-        assertEquals(Collections.emptyList(), testMapper.getPhrases());
-    }
-
-    @Test
-    void canSetWords(){
-        List<String> testList = List.of("test");
-        testMapper.setPhrases(testList);
-
-        assertEquals(List.of("test"), testMapper.getPhrases());
-    }
-
     @Test
     void canMapWords(){
         List<String> testList = List.of("a", "test", "test", "this", "is", "a", "test");
-        testMapper.setPhrases(testList);
 
         Map<String, Integer> testMap = new HashMap<>();
         testMap.put("test", 3);
@@ -43,6 +22,6 @@ class PhraseMapperTest {
         testMap.put("this", 1);
         testMap.put("is", 1);
 
-        assertEquals(testMap, testMapper.mapPhraseCount(0));
+        assertEquals(testMap, PhraseMapper.mapPhraseCount(testList,0));
     }
 }
