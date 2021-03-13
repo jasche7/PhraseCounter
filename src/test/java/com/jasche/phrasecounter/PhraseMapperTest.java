@@ -43,6 +43,6 @@ class PhraseMapperTest {
         testMap.put("this", 1);
         testMap.put("is", 1);
 
-        assertEquals(testMap, testMapper.mapPhraseCount());
+        assertEquals(testMap, testMapper.mapPhraseCount(0));
     }
 }

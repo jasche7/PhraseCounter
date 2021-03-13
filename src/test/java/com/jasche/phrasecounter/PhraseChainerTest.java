@@ -48,7 +48,7 @@ class PhraseChainerTest {
 
     @Test
     void canBuildPhrase() {
-        List<String> testPhrases = new LinkedList<>(PhraseChainer.chainWords(testList));
+        List<String> testPhrases = new LinkedList<>(PhraseChainer.chainWords(testList, 0));
         testPhrases.sort(Comparator.naturalOrder());
         assertEquals(correctList, testPhrases);
     }

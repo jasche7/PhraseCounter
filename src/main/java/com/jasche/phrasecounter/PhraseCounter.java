@@ -9,11 +9,19 @@ import static com.jasche.phrasecounter.MyLogger.LOGGER;
 public class PhraseCounter {
 
     public static void main(String[] args) {
-        if(args.length != 1){
-            LOGGER.severe("Enter filepath as argument");
+        if(args.length > 3){
+            LOGGER.severe("Usage: <filepath> [# of minimum occurrences] [# of maximum phrase length]");
             return;
         }
 
+        int minOccurrences = 0;
+        int maxPhraseLength = 0;
+        if(args.length > 1 && Integer.TYPE.isInstance(args[1])){
+            minOccurrences = Integer.parseInt(args[1]);
+            if(args.length > 2 && Integer.TYPE.isInstance(args[2])){
+                maxPhraseLength = Integer.parseInt(args[2]);
+            }
+        }
         FileOpener file = new FileOpener(args[0]);
         List<String> wordsList;
         try {
@@ -22,9 +30,9 @@ public class PhraseCounter {
             file -> word list -> phrase list -> phrase map -> sorted phrase map -> print
             */
             wordsList = file.readFile();
-            List<String> phrasesList = PhraseChainer.chainWords(wordsList);
+            List<String> phrasesList = PhraseChainer.chainWords(wordsList, maxPhraseLength);
             PhraseMapper map = new PhraseMapper(phrasesList);
-            Map<String, Integer> phraseMap = map.mapPhraseCount();
+            Map<String, Integer> phraseMap = map.mapPhraseCount(minOccurrences);
             Map<String, Integer> sortedPhraseMap = MapUtil.sortByValue(phraseMap);
             MapUtil.printSortedMap(sortedPhraseMap);
 
