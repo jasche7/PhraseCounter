@@ -8,18 +8,33 @@ import static com.jasche.phrasecounter.MyLogger.LOGGER;
 
 public class PhraseCounter {
 
+    /**
+     * Helper method for printing error message on usage.
+     */
+    private static void incorrectArgs(){
+        LOGGER.severe("Usage: <filepath> [# of minimum occurrences] [# of maximum phrase length]");
+    }
+
     public static void main(String[] args) {
-        if(args.length > 3){
-            LOGGER.severe("Usage: <filepath> [# of minimum occurrences] [# of maximum phrase length]");
+        if(args.length == 0 || args.length > 3){
+            incorrectArgs();
             return;
         }
-
         int minOccurrences = 0;
         int maxPhraseLength = 0;
-        if(args.length > 1 && Integer.TYPE.isInstance(args[1])){
-            minOccurrences = Integer.parseInt(args[1]);
-            if(args.length > 2 && Integer.TYPE.isInstance(args[2])){
-                maxPhraseLength = Integer.parseInt(args[2]);
+        /*
+        Check if existing args[1] and/or args[2] are valid integers, so that
+        they can be set to minOccurrences and maxPhraseLength, respectively.
+         */
+        if(args.length > 1){
+            try{
+                minOccurrences = Integer.parseInt(args[1]);
+                if(args.length > 2){
+                    maxPhraseLength = Integer.parseInt(args[2]);
+                }
+            } catch (NumberFormatException e){
+                incorrectArgs();
+                return;
             }
         }
 
