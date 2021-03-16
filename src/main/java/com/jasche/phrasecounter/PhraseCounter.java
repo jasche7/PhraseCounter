@@ -41,8 +41,8 @@ public class PhraseCounter {
         try {
             /*
             Process file input in the following sequence:
-            file -> word list -> phrase list -> phrase map -> sorted phrase map ->
-                sorted phrase list (descending order) -> print
+            file -> word list -> phrase list -> phrase map -> sorted phrase map (descending order) ->
+                sorted phrase list -> print
             */
             List<String> wordsList = FileOpener.readFile(args[0]);
             List<String> phrasesList = PhraseChainer.chainWords(wordsList, maxPhraseLength);

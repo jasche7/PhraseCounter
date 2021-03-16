@@ -15,7 +15,7 @@ public class MapUtil {
      * From Carter Page at https://stackoverflow.com/a/2581754
      *
      * Creates list of map entries from the map parameter.
-     * Sorts the list by value in ascending order.
+     * Sorts the list by value in descending order.
      * Creates a new linked hash map containing the list entries.
      * LinkedHashMap allows for consistent iteration.
      * @param map   map containing entries to be sorted
@@ -26,6 +26,7 @@ public class MapUtil {
     public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
         List<Map.Entry<K, V>> list = new ArrayList<>(map.entrySet());
         list.sort(Map.Entry.comparingByValue());
+        Collections.reverse(list);
 
         Map<K, V> result = new LinkedHashMap<>();
         for (Map.Entry<K, V> entry : list) {
@@ -37,8 +38,7 @@ public class MapUtil {
 
     /**
      * Creates list iterator for the entrySet of the generic sortedMap param.
-     * It iterates through the map and creates a list of the map's entries
-     * as strings in reverse order.
+     * It iterates through the map and creates a list of the map's entries as strings.
      * @param sortedMap map with generic typed key and value
      * @param <K>   generic type for sortedMap key
      * @param <V>   generic type for sortedMap value
@@ -46,12 +46,12 @@ public class MapUtil {
      */
     public static <K, V extends Comparable<? super V>> List<String> convertMapToList(Map<K, V> sortedMap){
         ListIterator<Map.Entry<K, V>> mapIterator =
-                new ArrayList<>(sortedMap.entrySet()).listIterator(sortedMap.size());
+                new ArrayList<>(sortedMap.entrySet()).listIterator();
 
         List<String> newList = new LinkedList<>();
 
-        while (mapIterator.hasPrevious()) {
-            Map.Entry<K, V> entry = mapIterator.previous();
+        while (mapIterator.hasNext()) {
+            Map.Entry<K, V> entry = mapIterator.next();
             newList.add(entry.toString());
         }
 

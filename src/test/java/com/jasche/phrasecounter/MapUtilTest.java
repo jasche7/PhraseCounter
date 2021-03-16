@@ -28,18 +28,18 @@ class MapUtilTest {
         testSortedMap.put("fourth", 4);
         testSortedMap.put("fifth", 5);
         testList = new LinkedList<>(List.of(
-                "fifth=5",
-                "fourth=4",
-                "third=3",
+                "first=1",
                 "second=2",
-                "first=1"));
+                "third=3",
+                "fourth=4",
+                "fifth=5"));
     }
 
     @Test
     void canSortStringToIntegerMap(){
         Map<String, Integer> sortedMap = MapUtil.sortByValue(testMap);
         String sortedMapAsString = sortedMap.entrySet().toString();
-        assertEquals("[first=1, second=2, third=3, fourth=4, fifth=5]", sortedMapAsString);
+        assertEquals("[fifth=5, fourth=4, third=3, second=2, first=1]", sortedMapAsString);
     }
 
     @Test
