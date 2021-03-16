@@ -41,14 +41,17 @@ public class PhraseCounter {
         try {
             /*
             Process file input in the following sequence:
-            file -> word list -> phrase list -> phrase map -> sorted phrase map -> print
+            file -> word list -> phrase list -> phrase map -> sorted phrase map ->
+                sorted phrase list (descending order) -> print
             */
             List<String> wordsList = FileOpener.readFile(args[0]);
             List<String> phrasesList = PhraseChainer.chainWords(wordsList, maxPhraseLength);
             Map<String, Integer> phraseMap = PhraseMapper.mapPhraseCount(phrasesList, minOccurrences);
             Map<String, Integer> sortedPhraseMap = MapUtil.sortByValue(phraseMap);
-            MapUtil.printSortedMap(sortedPhraseMap);
-
+            List<String> outputList = MapUtil.convertMapToList(sortedPhraseMap);
+            for(String s : outputList){
+                System.out.println(s);
+            }
             /*
             Log each intermediate step to fine level.
              */

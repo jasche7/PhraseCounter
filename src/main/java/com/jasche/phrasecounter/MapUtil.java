@@ -37,18 +37,24 @@ public class MapUtil {
 
     /**
      * Creates list iterator for the entrySet of the generic sortedMap param.
-     * List iterator starts at the tail and prints out each entry until the head to standard output.
+     * It iterates through the map and creates a list of the map's entries
+     * as strings in reverse order.
      * @param sortedMap map with generic typed key and value
      * @param <K>   generic type for sortedMap key
      * @param <V>   generic type for sortedMap value
+     * @return  list containing sortedMap's entries as Strings, in reverse order
      */
-    public static <K, V extends Comparable<? super V>> void printSortedMap(Map<K, V> sortedMap){
+    public static <K, V extends Comparable<? super V>> List<String> convertMapToList(Map<K, V> sortedMap){
         ListIterator<Map.Entry<K, V>> mapIterator =
                 new ArrayList<>(sortedMap.entrySet()).listIterator(sortedMap.size());
 
+        List<String> newList = new LinkedList<>();
+
         while (mapIterator.hasPrevious()) {
             Map.Entry<K, V> entry = mapIterator.previous();
-            System.out.println(entry.getKey() + ":" + entry.getValue());
+            newList.add(entry.toString());
         }
+
+        return newList;
     }
 }
