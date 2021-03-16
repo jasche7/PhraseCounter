@@ -7,7 +7,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MapUtilTest {
+class MapTransformerTest {
 
     private static Map<String, Integer> testMap;
     private static Map<String, Integer> testSortedMap;
@@ -37,13 +37,13 @@ class MapUtilTest {
 
     @Test
     void canSortStringToIntegerMap(){
-        Map<String, Integer> sortedMap = MapUtil.sortByValue(testMap);
+        Map<String, Integer> sortedMap = MapTransformer.sortMapDescendingValue(testMap);
         String sortedMapAsString = sortedMap.entrySet().toString();
         assertEquals("[fifth=5, fourth=4, third=3, second=2, first=1]", sortedMapAsString);
     }
 
     @Test
     void canCreateListFromMap(){
-        assertEquals(testList, MapUtil.convertMapToList(testSortedMap));
+        assertEquals(testList, MapTransformer.convertMapToList(testSortedMap));
     }
 }

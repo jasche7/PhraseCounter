@@ -2,28 +2,27 @@ package com.jasche.phrasecounter;
 
 import java.util.*;
 
-public class MapUtil {
+public class MapTransformer {
 
     /**
      * Utility class should not be instantiated.
      */
-    private MapUtil(){
+    private MapTransformer(){
         throw new IllegalStateException("Utility class");
     }
 
     /**
      * From Carter Page at https://stackoverflow.com/a/2581754
      *
-     * Creates list of map entries from the map parameter.
-     * Sorts the list by value in descending order.
-     * Creates a new linked hash map containing the list entries.
-     * LinkedHashMap allows for consistent iteration.
+     * Sorts map by descending order by using ArrayList as intermediate step.
+     * Creates a new linked hash map containing the list entries, which can
+     * be consistently iterated through.
      * @param map   map containing entries to be sorted
      * @param <K>   generic type for key
      * @param <V>   generic type for value
      * @return  linked hash map containing sorted entries from map
      */
-    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
+    public static <K, V extends Comparable<? super V>> Map<K, V> sortMapDescendingValue(Map<K, V> map) {
         List<Map.Entry<K, V>> list = new ArrayList<>(map.entrySet());
         list.sort(Map.Entry.comparingByValue());
         Collections.reverse(list);
