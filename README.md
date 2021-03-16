@@ -4,10 +4,11 @@ Java app that counts occurrences of phrases in a file.
 ## Project Status
 Current milestone:
 Command line tool that takes a single file path as an argument. Prints out phrase count.
+Can filter output to phrases that occur at least a certain number of times or are at max a certain length.
 Has basic Maven usage, including continuous integration with Github Actions.
 
 Next milestone:
-Desperately needs configuration options to limit output. Unfiltered output is excessive.
+Refactor printing such that it returns an object and create another method that handles the actual printing.
 
 Endgoal:
 With improved UI, counts phrases (consecutive words) instead of words and has customizable options for computing output.
@@ -22,7 +23,7 @@ Sample output:
 ## Usage
 Run "mvn package" to create an executable jar file, or otherwise create the jar file independently.
 
-`java -jar <jar-file-name> <filepath>`
+`java -jar <jar-file-name> <filepath> [# of minimum occurrences] [# of maximum phrase length]`
 
 
 ## Reflection

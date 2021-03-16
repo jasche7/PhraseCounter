@@ -8,23 +8,44 @@ import static com.jasche.phrasecounter.MyLogger.LOGGER;
 
 public class PhraseCounter {
 
+    /**
+     * Helper method for printing error message on usage.
+     */
+    private static void incorrectArgs(){
+        LOGGER.severe("Usage: <filepath> [# of minimum occurrences] [# of maximum phrase length]");
+    }
+
     public static void main(String[] args) {
-        if(args.length != 1){
-            LOGGER.severe("Enter filepath as argument");
+        if(args.length == 0 || args.length > 3){
+            incorrectArgs();
             return;
         }
+        int minOccurrences = 0;
+        int maxPhraseLength = 0;
+        /*
+        Check if existing args[1] and/or args[2] are valid integers, so that
+        they can be set to minOccurrences and maxPhraseLength, respectively.
+         */
+        if(args.length > 1){
+            try{
+                minOccurrences = Integer.parseInt(args[1]);
+                if(args.length > 2){
+                    maxPhraseLength = Integer.parseInt(args[2]);
+                }
+            } catch (NumberFormatException e){
+                incorrectArgs();
+                return;
+            }
+        }
 
-        FileOpener file = new FileOpener(args[0]);
-        List<String> wordsList;
         try {
             /*
             Process file input in the following sequence:
             file -> word list -> phrase list -> phrase map -> sorted phrase map -> print
             */
-            wordsList = file.readFile();
-            List<String> phrasesList = PhraseChainer.chainWords(wordsList);
-            PhraseMapper map = new PhraseMapper(phrasesList);
-            Map<String, Integer> phraseMap = map.mapPhraseCount();
+            List<String> wordsList = FileOpener.readFile(args[0]);
+            List<String> phrasesList = PhraseChainer.chainWords(wordsList, maxPhraseLength);
+            Map<String, Integer> phraseMap = PhraseMapper.mapPhraseCount(phrasesList, minOccurrences);
             Map<String, Integer> sortedPhraseMap = MapUtil.sortByValue(phraseMap);
             MapUtil.printSortedMap(sortedPhraseMap);
 
