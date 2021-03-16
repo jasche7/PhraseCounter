@@ -49,9 +49,7 @@ public class PhraseCounter {
             Map<String, Integer> phraseMap = PhraseMapper.mapPhraseCount(phrasesList, minOccurrences);
             Map<String, Integer> sortedPhraseMap = MapUtil.sortByValue(phraseMap);
             List<String> outputList = MapUtil.convertMapToList(sortedPhraseMap);
-            for(String s : outputList){
-                System.out.println(s);
-            }
+            ListPrinter.printList(outputList);
             /*
             Log each intermediate step to fine level.
              */
