@@ -31,7 +31,7 @@ class FileOpenerTest {
 
             @DisplayName("Then a file not found error is given")
             @Test
-            void testReadInvalidFile(){
+            void exceptionOnReadInvalidFile(){
                 assertThrows(FileNotFoundException.class, () -> FileOpener.readFile(filename));
             }
         }
@@ -56,7 +56,7 @@ class FileOpenerTest {
 
             @DisplayName("Then a list can be created with those words")
             @Test
-            void testReadWords(){
+            void canReadWords(){
                 assertEquals(testList, FileOpener.readWords(scanner));
             }
         }
@@ -73,7 +73,7 @@ class FileOpenerTest {
 
             @DisplayName("Then an empty list is created")
             @Test
-            void testReadEmpty(){
+            void canReadEmpty(){
                 assertEquals(testList, FileOpener.readWords(scanner));
             }
         }
