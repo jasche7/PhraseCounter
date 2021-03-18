@@ -17,7 +17,7 @@ class MapTransformerTest {
 
         @BeforeEach
         void setUp(){
-            testMap = new HashMap<>();
+            testMap = new LinkedHashMap<>();
             testMap.put("fourth", 4);
             testMap.put("first", 1);
             testMap.put("fifth", 5);
