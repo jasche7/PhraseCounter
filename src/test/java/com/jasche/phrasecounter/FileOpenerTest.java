@@ -10,14 +10,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class FileOpenerTest {
 
     @DisplayName("Given that there is a file to read")
     @Nested
-    class ReadFileTest{
-
+    class ReadFileTest {
         private String filename;
 
         @DisplayName("When the file is invalid")
@@ -31,7 +31,7 @@ class FileOpenerTest {
 
             @DisplayName("Then a file not found error is given")
             @Test
-            void exceptionOnReadInvalidFile(){
+            void exceptionOnReadInvalidFile() {
                 assertThrows(FileNotFoundException.class, () -> FileOpener.readFile(filename));
             }
         }
@@ -39,8 +39,7 @@ class FileOpenerTest {
 
     @DisplayName("Given that there are words to read")
     @Nested
-    class ReadWordsTest{
-
+    class ReadWordsTest {
         private Scanner scanner;
         private List<String> testList;
 
@@ -49,14 +48,14 @@ class FileOpenerTest {
         class ValidWords {
 
             @BeforeEach
-            void setUp(){
+            void setUp() {
                 scanner = new Scanner("I am testing that readWords can read.");
                 testList = List.of("I", "am", "testing", "that", "readWords", "can", "read.");
             }
 
             @DisplayName("Then a list can be created with those words")
             @Test
-            void canReadWords(){
+            void canReadWords() {
                 assertEquals(testList, FileOpener.readWords(scanner));
             }
         }
@@ -66,18 +65,16 @@ class FileOpenerTest {
         class EmptyWords {
 
             @BeforeEach
-            void setUp(){
+            void setUp() {
                 scanner = new Scanner("");
                 testList = Collections.emptyList();
             }
 
             @DisplayName("Then an empty list is created")
             @Test
-            void canReadEmpty(){
+            void canReadEmpty() {
                 assertEquals(testList, FileOpener.readWords(scanner));
             }
         }
-
     }
-
 }

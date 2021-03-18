@@ -6,12 +6,16 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Utility class that opens a filename and returns a list of all words from it.
+ * @since v0.1.0
+ */
 public class FileOpener {
 
     /**
      * Utility class should not be instantiated.
      */
-    private FileOpener(){
+    private FileOpener() {
         throw new IllegalStateException("Utility class");
     }
 
@@ -22,7 +26,7 @@ public class FileOpener {
      * @return  list of all words from filename
      * @throws FileNotFoundException    if filename is invalid
      */
-    public static List<String> readFile(String filename) throws FileNotFoundException{
+    public static List<String> readFile(String filename) throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(filename));
         return readWords(scanner);
     }
@@ -33,9 +37,9 @@ public class FileOpener {
      * @param scanner   scanner, expected to read filename after being passed from readFile
      * @return          linked list of words from filename as a List of Strings
      */
-    public static List<String> readWords(Scanner scanner){
+    public static List<String> readWords(Scanner scanner) {
         List<String> fileWords = new LinkedList<>();
-        while(scanner.hasNext()){
+        while (scanner.hasNext()) {
             String word = scanner.next();
             fileWords.add(word);
         }

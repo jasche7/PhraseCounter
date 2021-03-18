@@ -10,14 +10,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class PhraseMapperTest {
 
     @DisplayName("Given there is a list of words")
     @Nested
     class MapTest {
-
         private List<String> testList;
         private Map<String, Integer> correctMap;
 
@@ -26,7 +27,7 @@ class PhraseMapperTest {
         }
 
         @BeforeEach
-        void setUp(){
+        void setUp() {
             testList = List.of("a", "test", "test", "this", "is", "a", "test");
             correctMap = new HashMap<>();
             correctMap.put("test", 3);
@@ -41,25 +42,25 @@ class PhraseMapperTest {
 
             @DisplayName("Then an extremely low minimum occurrence will include all words")
             @Test
-            void canMapWordsMinLow(){
+            void canMapWordsMinLow() {
                 assertEquals(correctMap, generateTestMap(Integer.MIN_VALUE));
             }
 
             @DisplayName("Then a minimum occurrence of 0 will include all words")
             @Test
-            void canMapWords(){
+            void canMapWords() {
                 assertEquals(correctMap, generateTestMap(0));
             }
 
             @DisplayName("Then a minimum occurrence of 1 will include all words")
             @Test
-            void canMapWordsMin1(){
+            void canMapWordsMin1() {
                 assertEquals(correctMap, generateTestMap(1));
             }
 
             @DisplayName("Then a minimum occurrence of 2 will include only words that occur at least twice")
             @Test
-            void canMapWordsMin2(){
+            void canMapWordsMin2() {
                 Map<String, Integer> testMap = generateTestMap(2);
                 assertAll(
                         () -> assertNull(testMap.get("this")),
@@ -71,11 +72,9 @@ class PhraseMapperTest {
 
             @DisplayName("Then an extremely high minimum occurrence will include no words")
             @Test
-            void canMapWordsMinHigh(){
+            void canMapWordsMinHigh() {
                 assertEquals(Collections.emptyMap(), generateTestMap(Integer.MAX_VALUE));
             }
         }
-
     }
-
 }

@@ -8,12 +8,17 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 
+/**
+ * Utility class whose methods take in a map and modify it, such as by
+ * sorting it or converting it to a list.
+ * @since v0.1.0
+ */
 public class MapTransformer {
 
     /**
      * Utility class should not be instantiated.
      */
-    private MapTransformer(){
+    private MapTransformer() {
         throw new IllegalStateException("Utility class");
     }
 
@@ -52,7 +57,6 @@ public class MapTransformer {
     public static <K, V extends Comparable<? super V>> List<String> convertMapToList(Map<K, V> sortedMap){
         ListIterator<Map.Entry<K, V>> mapIterator =
                 new ArrayList<>(sortedMap.entrySet()).listIterator();
-
         List<String> newList = new LinkedList<>();
 
         while (mapIterator.hasNext()) {
