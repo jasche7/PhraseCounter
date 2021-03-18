@@ -20,6 +20,11 @@ public class PhraseCounter {
         LOGGER.severe("Usage: <filepath> [# of minimum occurrences] [# of maximum phrase length]");
     }
 
+    /**
+     * Main function. Required first arg is filename, followed by two optional args for
+     * minimum occurrences and maximum phrase length.
+     * @param args  CLI arguments
+     */
     public static void main(String[] args) {
         if (args.length == 0 || args.length > 3) {
             incorrectArgs();
