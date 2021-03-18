@@ -18,9 +18,7 @@ class PhraseChainerTest {
         private List<String> correctListForLength2;
 
         List<String> generateTestPhrases(int maxPhraseLength){
-            List<String> testPhrases = new LinkedList<>(PhraseChainer.chainWords(testList, maxPhraseLength));
-            testPhrases.sort(Comparator.naturalOrder());
-            return testPhrases;
+            return new LinkedList<>(PhraseChainer.chainWords(testList, maxPhraseLength));
         }
 
         @BeforeEach
@@ -54,7 +52,6 @@ class PhraseChainerTest {
                     "first",
                     "first napkin",
                     "napkin"));
-            correctListForLength1 = new LinkedList<>(testList);
             correctListForLength2 = new LinkedList<>(List.of(
                     "I",
                     "I have",
@@ -68,10 +65,6 @@ class PhraseChainerTest {
                     "first napkin",
                     "napkin"
             ));
-
-            correctList.sort(Comparator.naturalOrder());
-            correctListForLength1.sort(Comparator.naturalOrder());
-            correctListForLength2.sort(Comparator.naturalOrder());
         }
 
         @DisplayName("When we want to create phrases from those words")
@@ -81,36 +74,31 @@ class PhraseChainerTest {
             @DisplayName("Then a max phrase length of 0 will create all normal phrases")
             @Test
             void canBuildPhrase(){
-                List<String> testPhrases = generateTestPhrases(0);
-                assertEquals(correctList, testPhrases);
+                assertEquals(correctList, generateTestPhrases(0));
             }
 
             @DisplayName("Then a negative max phrase length will create no phrases")
             @Test
             void canSetMaxPhraseLengthNegative(){
-                List<String> testPhrases = generateTestPhrases((Integer.MIN_VALUE));
-                assertEquals(Collections.emptyList(), testPhrases);
+                assertEquals(Collections.emptyList(), generateTestPhrases(Integer.MIN_VALUE));
             }
 
             @DisplayName("Then a max phrase length of 1 will be identical to the original list")
             @Test
             void canSetMaxPhraseLength1(){
-                List<String> testPhrases = generateTestPhrases(1);
-                assertEquals(correctListForLength1, testPhrases);
+                assertEquals(testList, generateTestPhrases(1));
             }
 
             @DisplayName("Then a max phrase length of 'n' will create phrases of length up to 'n'")
             @Test
             void canSetMaxPhraseLength2(){
-                List<String> testPhrases = generateTestPhrases(2);
-                assertEquals(correctListForLength2, testPhrases);
+                assertEquals(correctListForLength2, generateTestPhrases(2));
             }
 
             @DisplayName("Then a very high max phrase length will create all normal phrases")
             @Test
             void canSetMaxPhraseLengthHigh(){
-                List<String> testPhrases = generateTestPhrases(Integer.MAX_VALUE);
-                assertEquals(correctList, testPhrases);
+                assertEquals(correctList, generateTestPhrases(Integer.MAX_VALUE));
             }
         }
 
