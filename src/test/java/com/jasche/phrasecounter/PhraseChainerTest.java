@@ -2,7 +2,9 @@ package com.jasche.phrasecounter;
 
 import org.junit.jupiter.api.*;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,7 +16,6 @@ class PhraseChainerTest {
 
         private List<String> testList;
         private List<String> correctList;
-        private List<String> correctListForLength1;
         private List<String> correctListForLength2;
 
         List<String> generateTestPhrases(int maxPhraseLength){
