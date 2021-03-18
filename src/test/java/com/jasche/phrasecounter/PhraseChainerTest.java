@@ -71,16 +71,16 @@ class PhraseChainerTest {
         @Nested
         class CreatePhrases {
 
-            @DisplayName("Then a max phrase length of 0 will create all normal phrases")
-            @Test
-            void canBuildPhrase(){
-                assertEquals(correctList, generateTestPhrases(0));
-            }
-
             @DisplayName("Then a negative max phrase length will create no phrases")
             @Test
             void canSetMaxPhraseLengthNegative(){
                 assertEquals(Collections.emptyList(), generateTestPhrases(Integer.MIN_VALUE));
+            }
+
+            @DisplayName("Then a max phrase length of 0 will create all normal phrases")
+            @Test
+            void canBuildPhrase(){
+                assertEquals(correctList, generateTestPhrases(0));
             }
 
             @DisplayName("Then a max phrase length of 1 will be identical to the original list")
@@ -89,7 +89,7 @@ class PhraseChainerTest {
                 assertEquals(testList, generateTestPhrases(1));
             }
 
-            @DisplayName("Then a max phrase length of 'n' will create phrases of length up to 'n'")
+            @DisplayName("Then a max phrase length of 2 will create phrases of length up to 2")
             @Test
             void canSetMaxPhraseLength2(){
                 assertEquals(correctListForLength2, generateTestPhrases(2));
