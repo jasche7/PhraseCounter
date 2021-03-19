@@ -7,12 +7,7 @@ Command line tool that takes a single file path as an argument. Prints out phras
 Can filter output to phrases that occur at least a certain number of times or are at max a certain length.
 Has basic Maven usage, including continuous integration with Github Actions.
 
-Next milestone:
-Refactor printing such that it returns an object and create another method that handles the actual printing.
-
-Endgoal:
-With improved UI, counts phrases (consecutive words) instead of words and has customizable options for computing output.
-Possibly create new branch to turn into single page webapp.
+Done for now, but will make a branch to create Spring Framework webapp.
 
 ## Project Screenshot(s)
 Sample output:

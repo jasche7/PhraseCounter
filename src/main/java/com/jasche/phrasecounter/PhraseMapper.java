@@ -4,12 +4,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Utility class that creates a map of strings to their number of occurrences.
+ */
 public class PhraseMapper {
 
     /**
      * Utility class should not be instantiated.
      */
-    private PhraseMapper(){
+    private PhraseMapper() {
         throw new IllegalStateException("Utility class");
     }
 
@@ -23,16 +26,18 @@ public class PhraseMapper {
      * @param minOccurrences    retain only keys whose value is at least this number
      * @return  map of phrases to the integer number of times they occur
      */
-    public static Map<String, Integer> mapPhraseCount(List<String> phrases, int minOccurrences){
+    public static Map<String, Integer> mapPhraseCount(List<String> phrases, int minOccurrences) {
         Map<String, Integer> phraseMap = new HashMap<>();
-        for(String p : phrases){
-            if(phraseMap.containsKey(p)){
+
+        for (String p : phrases) {
+            if (phraseMap.containsKey(p)) {
                 phraseMap.put(p, phraseMap.get(p) + 1);
             }
-            else{
+            else {
                 phraseMap.put(p, 1);
             }
         }
+
         phraseMap.entrySet().removeIf(entry -> entry.getValue() < minOccurrences);
         return phraseMap;
     }
