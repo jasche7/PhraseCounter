@@ -2,12 +2,16 @@ package com.jasche.phrasecounter;
 
 import java.util.logging.Logger;
 
+/**
+ * Utility class that creates a static Java util logger.
+ * @since v0.1.0
+ */
 public class MyLogger {
 
     /**
      * Utility class should not be instantiated.
      */
-    private MyLogger(){
+    private MyLogger() {
         throw new IllegalStateException("Utility class");
     }
 

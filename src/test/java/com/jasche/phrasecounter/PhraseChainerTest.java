@@ -1,103 +1,108 @@
 package com.jasche.phrasecounter;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PhraseChainerTest {
 
-    private static List<String> testList;
-    private static List<String> correctList;
-    private static List<String> correctListForLength1;
-    private static List<String> correctListForLength2;
+    @DisplayName("Given there is a list of words")
+    @Nested
+    class ListTest {
 
-    List<String> generateTestPhrases(int maxPhraseLength){
-        List<String> testPhrases = new LinkedList<>(PhraseChainer.chainWords(testList, maxPhraseLength));
-        testPhrases.sort(Comparator.naturalOrder());
-        return testPhrases;
-    }
+        private List<String> testList;
+        private List<String> correctList;
+        private List<String> correctListForLength2;
 
-    @BeforeAll
-    static void init(){
-        testList = new LinkedList<>(List.of(
-                "I",
-                "have",
-                "taken",
-                "the",
-                "first",
-                "napkin"));
-        correctList = new LinkedList<>(List.of(
-                "I",
-                "I have",
-                "I have taken",
-                "I have taken the",
-                "I have taken the first",
-                "I have taken the first napkin",
-                "have",
-                "have taken",
-                "have taken the",
-                "have taken the first",
-                "have taken the first napkin",
-                "taken",
-                "taken the",
-                "taken the first",
-                "taken the first napkin",
-                "the",
-                "the first",
-                "the first napkin",
-                "first",
-                "first napkin",
-                "napkin"));
-        correctListForLength1 = new LinkedList<>(testList);
-        correctListForLength2 = new LinkedList<>(List.of(
-                "I",
-                "I have",
-                "have",
-                "have taken",
-                "taken",
-                "taken the",
-                "the",
-                "the first",
-                "first",
-                "first napkin",
-                "napkin"
-        ));
+        List<String> generateTestPhrases(int maxPhraseLength){
+            return new LinkedList<>(PhraseChainer.chainWords(testList, maxPhraseLength));
+        }
 
-        correctList.sort(Comparator.naturalOrder());
-        correctListForLength1.sort(Comparator.naturalOrder());
-        correctListForLength2.sort(Comparator.naturalOrder());
-    }
+        @BeforeEach
+        void setUp() {
+            testList = new LinkedList<>(List.of(
+                    "I",
+                    "have",
+                    "taken",
+                    "the",
+                    "first",
+                    "napkin"
+            ));
+            correctList = new LinkedList<>(List.of(
+                    "I",
+                    "I have",
+                    "I have taken",
+                    "I have taken the",
+                    "I have taken the first",
+                    "I have taken the first napkin",
+                    "have",
+                    "have taken",
+                    "have taken the",
+                    "have taken the first",
+                    "have taken the first napkin",
+                    "taken",
+                    "taken the",
+                    "taken the first",
+                    "taken the first napkin",
+                    "the",
+                    "the first",
+                    "the first napkin",
+                    "first",
+                    "first napkin",
+                    "napkin"
+            ));
+            correctListForLength2 = new LinkedList<>(List.of(
+                    "I",
+                    "I have",
+                    "have",
+                    "have taken",
+                    "taken",
+                    "taken the",
+                    "the",
+                    "the first",
+                    "first",
+                    "first napkin",
+                    "napkin"
+            ));
+        }
 
-    @Test
-    void canBuildPhrase(){
-        List<String> testPhrases = generateTestPhrases(0);
-        assertEquals(correctList, testPhrases);
-    }
+        @DisplayName("When we want to create phrases from those words")
+        @Nested
+        class CreatePhrases {
 
-    @Test
-    void canSetMaxPhraseLengthNegative(){
-        List<String> testPhrases = generateTestPhrases((Integer.MIN_VALUE));
-        assertEquals(Collections.emptyList(), testPhrases);
-    }
+            @DisplayName("Then a negative max phrase length will create no phrases")
+            @Test
+            void canSetMaxPhraseLengthNegative() {
+                assertEquals(Collections.emptyList(), generateTestPhrases(Integer.MIN_VALUE));
+            }
 
-    @Test
-    void canSetMaxPhraseLength1(){
-        List<String> testPhrases = generateTestPhrases(1);
-        assertEquals(correctListForLength1, testPhrases);
-    }
+            @DisplayName("Then a max phrase length of 0 will create all normal phrases")
+            @Test
+            void canBuildPhrase() {
+                assertEquals(correctList, generateTestPhrases(0));
+            }
 
-    @Test
-    void canSetMaxPhraseLength2(){
-        List<String> testPhrases = generateTestPhrases(2);
-        assertEquals(correctListForLength2, testPhrases);
-    }
+            @DisplayName("Then a max phrase length of 1 will be identical to the original list")
+            @Test
+            void canSetMaxPhraseLength1() {
+                assertEquals(testList, generateTestPhrases(1));
+            }
 
-    @Test
-    void canSetMaxPhraseLengthHigh(){
-        List<String> testPhrases = generateTestPhrases(Integer.MAX_VALUE);
-        assertEquals(correctList, testPhrases);
+            @DisplayName("Then a max phrase length of 2 will create phrases of length up to 2")
+            @Test
+            void canSetMaxPhraseLength2() {
+                assertEquals(correctListForLength2, generateTestPhrases(2));
+            }
+
+            @DisplayName("Then a very high max phrase length will create all normal phrases")
+            @Test
+            void canSetMaxPhraseLengthHigh() {
+                assertEquals(correctList, generateTestPhrases(Integer.MAX_VALUE));
+            }
+        }
     }
 }

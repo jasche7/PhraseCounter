@@ -3,12 +3,17 @@ package com.jasche.phrasecounter;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Utility class that creates a list of phrases from a list of strings.
+ * A phrase means consecutive strings combined into a single space-separated string.
+ * @since v0.1.0
+ */
 public class PhraseChainer {
 
     /**
      * Utility class should not be instantiated.
      */
-    private PhraseChainer(){
+    private PhraseChainer() {
         throw new IllegalStateException("Utility class");
     }
 
@@ -20,18 +25,20 @@ public class PhraseChainer {
      * @param phraseMaxLength   maximum length of sublist to be added to the output list
      * @return  list containing sublists from wordsList, each concatenated into one string
      */
-    public static List<String> chainWords(List<String> wordsList, int phraseMaxLength){
+    public static List<String> chainWords(List<String> wordsList, int phraseMaxLength) {
         List<String> phraseList = new LinkedList<>();
         int listLength = wordsList.size();
 
-        for(int listIndex = 0; listIndex < listLength; listIndex++){
-            for(int nextIndices = listIndex + 1; nextIndices <= listLength; nextIndices++){
-                if(phraseMaxLength != 0 && nextIndices - listIndex > phraseMaxLength) break;
+        for (int listIndex = 0; listIndex < listLength; listIndex++) {
+            for (int nextIndices = listIndex + 1; nextIndices <= listLength; nextIndices++) {
+                if (phraseMaxLength != 0 && nextIndices - listIndex > phraseMaxLength)
+                    break;
                 List<String> wordsSublist = wordsList.subList(listIndex, nextIndices);
                 String phrase = String.join(" ", wordsSublist);
                 phraseList.add(phrase);
             }
         }
+
         return phraseList;
     }
 
