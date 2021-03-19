@@ -1,10 +1,16 @@
 package com.jasche.phrasecounter;
 
+import com.jasche.phrasecounter.output.ListPrinter;
+import com.jasche.phrasecounter.utils.FileOpener;
+import com.jasche.phrasecounter.utils.MapTransformer;
+import com.jasche.phrasecounter.utils.PhraseChainer;
+import com.jasche.phrasecounter.utils.PhraseMapper;
+
 import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Map;
 
-import static com.jasche.phrasecounter.MyLogger.LOGGER;
+import static com.jasche.phrasecounter.output.MyLogger.LOGGER;
 
 /**
  * Main class that reads a file and prints out every phrase from the file, in descending order

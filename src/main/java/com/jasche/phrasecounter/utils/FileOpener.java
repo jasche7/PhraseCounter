@@ -1,4 +1,4 @@
-package com.jasche.phrasecounter;
+package com.jasche.phrasecounter.utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -1,4 +1,4 @@
-package com.jasche.phrasecounter;
+package com.jasche.phrasecounter.utils;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -19,6 +19,7 @@ class PhraseMapperTest {
     @DisplayName("Given there is a list of words")
     @Nested
     class MapTest {
+
         private List<String> testList;
         private Map<String, Integer> correctMap;
 
@@ -76,5 +77,7 @@ class PhraseMapperTest {
                 assertEquals(Collections.emptyMap(), generateTestMap(Integer.MAX_VALUE));
             }
         }
+
     }
+
 }
