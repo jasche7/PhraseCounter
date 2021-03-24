@@ -3,3 +3,4 @@
 /.idea/
 PhraseCounter.iml
 .DS_Store
+/.mvn/wrapper/wrapper.iml

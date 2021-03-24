@@ -1,4 +1,4 @@
-package com.jasche.phrasecounter.utils;
+package com.jasche.phrasecounter.services;
 
 import java.util.HashMap;
 import java.util.List;
