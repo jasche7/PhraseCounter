@@ -1,6 +1,6 @@
 package com.jasche.phrasecounter;
 
-import org.springframework.boot.SpringApplication;
+import static org.springframework.boot.SpringApplication.run;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
@@ -17,6 +17,6 @@ public class PhraseCounter {
      * @param args  CLI arguments
      */
     public static void main(String[] args) {
-        SpringApplication.run(PhraseCounter.class, args);
+        run(PhraseCounter.class, args);
     }
 }
