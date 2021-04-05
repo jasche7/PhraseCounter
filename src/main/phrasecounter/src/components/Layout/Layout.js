@@ -5,12 +5,16 @@ import PhraseList from "../Phrases/PhraseList";
 
 const Layout = () => {
   const [phraseCount, setPhraseCount] = useState([]);
+  const [active, setActive] = useState(false);
 
   return (
     <>
-      <Textbox setPhraseCount={setPhraseCount} />
-      <Display phraseCount={phraseCount} />
-      <PhraseList />
+      <Textbox
+        clickFunction={() => setActive(true)}
+        setPhraseCount={setPhraseCount}
+      />
+      <Display text={phraseCount[0]} />
+      <PhraseList active={active} phraseCount={phraseCount} />
     </>
   );
 };

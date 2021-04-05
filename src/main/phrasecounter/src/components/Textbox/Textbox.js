@@ -8,6 +8,7 @@ const Textbox = (props) => {
   const onSubmit = (event) => {
     event.preventDefault();
     props.setPhraseCount([text, occurrences, phrase]);
+    props.clickFunction();
   };
 
   return (

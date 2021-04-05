@@ -3,7 +3,7 @@ import React from "react";
 const Display = (props) => {
   return (
     <>
-      <p>{props.phraseCount[0]}</p>
+      <p>{props.text}</p>
     </>
   );
 };
