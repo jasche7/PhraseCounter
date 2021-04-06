@@ -3,8 +3,7 @@ import React from "react";
 const Phrase = (props) => {
   return (
     <div>
-      {props.phrase}
-      {props.count}
+      {props.phrase}: {props.count}
     </div>
   );
 };

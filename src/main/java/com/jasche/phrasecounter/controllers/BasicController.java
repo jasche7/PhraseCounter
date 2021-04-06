@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.Map;
 import java.util.Scanner;
@@ -29,7 +28,6 @@ public class BasicController {
      * @return HTTP response containing phrase counts
      */
     @PostMapping("/phrase")
-    @CrossOrigin(origins = "http://localhost:3000")
     @ResponseBody
     public ResponseEntity<Map<String, Integer>> createProduct(@RequestBody PhraseMaker phraseMaker) {
         Scanner scanner = new Scanner(phraseMaker.getText());
