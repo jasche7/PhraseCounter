@@ -1,4 +1,4 @@
-package com.jasche.phrasecounter;
+package com.jasche.phrasecounter.services;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

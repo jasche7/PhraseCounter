@@ -1,4 +1,4 @@
-package com.jasche.phrasecounter;
+package com.jasche.phrasecounter.output;
 
 import java.util.List;
 
