@@ -1,9 +1,6 @@
-package com.jasche.phrasecounter.services;
+package com.jasche.phrasecounter;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.Collections;
 import java.util.LinkedList;
