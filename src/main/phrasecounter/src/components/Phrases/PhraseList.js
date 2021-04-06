@@ -30,7 +30,7 @@ const PhraseList = (props) => {
       };
       makeRequest(phraseMaker);
     }
-  }, [props.phraseCount]);
+  }, [props.active, props.phraseCount]);
 
   return (
     <>
