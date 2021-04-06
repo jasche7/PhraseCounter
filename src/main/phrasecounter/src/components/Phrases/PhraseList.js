@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import Phrase from "./Phrase";
 
 const PhraseList = (props) => {
   const url = "http://localhost:8080/phrase";
-  const [res, setRes] = useState({});
+  const [res, setRes] = useState([]);
 
   const makeRequest = (data) => {
-    const response = fetch(url, {
+    fetch(url, {
       method: "POST",
       mode: "cors",
       headers: {
@@ -14,9 +15,10 @@ const PhraseList = (props) => {
       body: JSON.stringify(data),
     })
       .then((response) => response.json())
-      .then((result) => console.log(result));
-
-    setRes(response);
+      .then((result) => {
+        setRes(Object.entries(result));
+        console.log(result);
+      });
   };
 
   useEffect(() => {
@@ -29,7 +31,18 @@ const PhraseList = (props) => {
       makeRequest(phraseMaker);
     }
   }, [props.phraseCount]);
-  return <></>;
+
+  return (
+    <>
+      {res.map((phrasecount) => (
+        <Phrase
+          key={phrasecount[0]}
+          phrase={phrasecount[0]}
+          count={phrasecount[1]}
+        />
+      ))}
+    </>
+  );
 };
 
 export default PhraseList;
