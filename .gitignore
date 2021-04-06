@@ -3,9 +3,3 @@
 /.idea/
 PhraseCounter.iml
 .DS_Store
-/.mvn/
-/.settings/
-/.vscode/
-/.project
-/.classpath
-/.factorypath

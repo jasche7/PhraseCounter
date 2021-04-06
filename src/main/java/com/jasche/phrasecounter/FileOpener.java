@@ -1,4 +1,4 @@
-package com.jasche.phrasecounter.services;
+package com.jasche.phrasecounter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,7 +10,7 @@ import java.util.Scanner;
  * Utility class that opens a filename and returns a list of all words from it.
  * @since v0.1.0
  */
-public class  FileOpener {
+public class FileOpener {
 
     /**
      * Utility class should not be instantiated.
@@ -32,7 +32,7 @@ public class  FileOpener {
     }
 
     /**
-     * Read word-by-word from scanner until no more words rema in.
+     * Read word-by-word from scanner until no more words remain.
      * Add each word to the linked list fileWords.
      * @param scanner   scanner, expected to read filename after being passed from readFile
      * @return          linked list of words from filename as a List of Strings

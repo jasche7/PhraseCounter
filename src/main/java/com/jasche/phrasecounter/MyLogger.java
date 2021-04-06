@@ -1,4 +1,4 @@
-package com.jasche.phrasecounter.output;
+package com.jasche.phrasecounter;
 
 import java.util.logging.Logger;
 
