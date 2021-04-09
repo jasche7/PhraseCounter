@@ -16,8 +16,8 @@
     <version>0.5.0</version>
 
     <properties>
-        <maven.compiler.source>15</maven.compiler.source>
-        <maven.compiler.target>15</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <frontend-src-dir>${project.basedir}/src/main/phrasecounter</frontend-src-dir>
         <node.version>v15.13.0</node.version>
         <yarn.version>v1.22.5</yarn.version>
