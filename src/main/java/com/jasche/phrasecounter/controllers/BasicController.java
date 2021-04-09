@@ -4,6 +4,7 @@ import com.jasche.phrasecounter.models.PhraseMaker;
 import com.jasche.phrasecounter.services.FileOpener;
 import com.jasche.phrasecounter.services.PhraseService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,6 +29,7 @@ public class BasicController {
      * @return HTTP response containing phrase counts
      */
     @PostMapping("/phrase")
+    @CrossOrigin
     @ResponseBody
     public ResponseEntity<Map<String, Integer>> createProduct(@RequestBody PhraseMaker phraseMaker) {
         Scanner scanner = new Scanner(phraseMaker.getText());
