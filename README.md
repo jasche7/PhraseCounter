@@ -1,9 +1,9 @@
 # PhraseCounter
 Java app that counts occurrences of phrases in a file.
-
-Spring Boot Rest API that takes a single file path as an argument. Prints out phrase count.
 Can filter output to phrases that occur at least a certain number of times or are at max a certain length.
 Has basic Maven usage, including continuous integration with Github Actions.
+
+v0.5.0 is a Spring Boot Rest API that takes a single file path as an argument. Prints out phrase count.
 Currently deployed to Heroku at https://phrase-counter.herokuapp.com/. 
 
 React frontend is deployed at: https://jasche7.github.io/PhraseCounter-React/.
