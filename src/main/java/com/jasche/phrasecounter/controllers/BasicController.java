@@ -33,8 +33,19 @@ public class BasicController {
     @ResponseBody
     public ResponseEntity<Map<String, Integer>> createProduct(@RequestBody PhraseMaker phraseMaker) {
         Scanner scanner = new Scanner(phraseMaker.getText());
-        return ResponseEntity.ok(PhraseService.makePhrases(FileOpener.readWords(scanner), // creates list of strings
-                                                                                          // from text field
-                phraseMaker.getMinOccurrences(), phraseMaker.getMaxPhraseLength()));
+
+        // creates list of strings from text field, also passing flags for case sensitive and ignoring punctuation
+        // at the end of a word
+        return ResponseEntity.ok(
+            PhraseService.makePhrases(
+                FileOpener.readWords(
+                    scanner,
+                    phraseMaker.isCaseSensitive(),
+                    phraseMaker.isIgnoringPunctuation()
+                ),
+                phraseMaker.getMinOccurrences(),
+                phraseMaker.getMaxPhraseLength()
+            )
+        );
     }
 }

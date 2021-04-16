@@ -56,7 +56,7 @@ class FileOpenerTest {
             @DisplayName("Then a list can be created with those words")
             @Test
             void canReadWords() {
-                assertEquals(testList, FileOpener.readWords(scanner));
+                assertEquals(testList, FileOpener.readWords(scanner, false, false));
             }
         }
 
@@ -73,7 +73,7 @@ class FileOpenerTest {
             @DisplayName("Then an empty list is created")
             @Test
             void canReadEmpty() {
-                assertEquals(testList, FileOpener.readWords(scanner));
+                assertEquals(testList, FileOpener.readWords(scanner, false, false));
             }
         }
     }
