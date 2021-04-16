@@ -2,7 +2,7 @@ package com.jasche.phrasecounter.services;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -28,7 +28,7 @@ public class  FileOpener {
      */
     public static List<String> readFile(String filename) throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(filename));
-        return readWords(scanner);
+        return readWords(scanner, false, false);
     }
 
     /**
@@ -37,8 +37,8 @@ public class  FileOpener {
      * @param scanner   scanner, expected to read filename after being passed from readFile
      * @return          linked list of words from filename as a List of Strings
      */
-    public static List<String> readWords(Scanner scanner) {
-        List<String> fileWords = new LinkedList<>();
+    public static List<String> readWords(Scanner scanner, boolean isCaseSensitive, boolean isIgnoringPunctuation) {
+        List<String> fileWords = new ArrayList<>();
         while (scanner.hasNext()) {
             String word = scanner.next();
             fileWords.add(word);
