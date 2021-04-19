@@ -9,3 +9,5 @@ PhraseCounter.iml
 /.project
 /.classpath
 /.factorypath
+/phrasecounter.ipr
+/phrasecounter.iws
