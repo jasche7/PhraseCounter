@@ -42,6 +42,9 @@ class FileOpenerTest {
     class ReadWordsTest {
         private Scanner scanner;
         private List<String> testList;
+        private List<String> testListNCS;
+        private List<String> testListNP;
+        private List<String> testListBoth;
 
         @DisplayName("When there are valid words")
         @Nested
@@ -49,14 +52,35 @@ class FileOpenerTest {
 
             @BeforeEach
             void setUp() {
-                scanner = new Scanner("I am testing that readWords can read.");
-                testList = List.of("I", "am", "testing", "that", "readWords", "can", "read.");
+                scanner = new Scanner("I am 'testing' that readWords can read...");
+                testList = List.of("I", "am", "'testing'", "that", "readWords", "can", "read...");
+                testListNCS = List.of("i", "am", "'testing'", "that", "readwords", "can", "read...");
+                testListNP = List.of("I", "am", "testing", "that", "readWords", "can", "read");
+                testListBoth = List.of("i", "am", "testing", "that", "readwords", "can", "read");
             }
 
             @DisplayName("Then a list can be created with those words")
             @Test
             void canReadWords() {
-                assertEquals(testList, FileOpener.readWords(scanner, false, false));
+                assertEquals(testList, FileOpener.readWords(scanner, true, false));
+            }
+
+            @DisplayName("Then we can read them without case sensitivity")
+            @Test
+            void canReadNonCaseSensitive() {
+                assertEquals(testListNCS, FileOpener.readWords(scanner, false, false));
+            }
+
+            @DisplayName("Then we can read them while omitting punctuation at the start and end")
+            @Test
+            void canReadNoPunctuation() {
+                assertEquals(testListNP, FileOpener.readWords(scanner, true, true));
+            }
+
+            @DisplayName("Then we can read them with both of the previous two settings")
+            @Test
+            void canReadBoth() {
+                assertEquals(testListBoth, FileOpener.readWords(scanner, false, true));
             }
         }
 

@@ -34,13 +34,22 @@ public class  FileOpener {
     /**
      * Read word-by-word from scanner until no more words rema in.
      * Add each word to the linked list fileWords.
-     * @param scanner   scanner, expected to read filename after being passed from readFile
-     * @return          linked list of words from filename as a List of Strings
+     * @param scanner   scanner that reads words
+     * @param isCaseSensitive   if false, all words are set to lowercase
+     * @param isIgnoringPunctuation if true, all leading and trailing punctuation is removed
+     * @return  list of words from filename as a List of Strings
      */
     public static List<String> readWords(Scanner scanner, boolean isCaseSensitive, boolean isIgnoringPunctuation) {
         List<String> fileWords = new ArrayList<>();
         while (scanner.hasNext()) {
             String word = scanner.next();
+            if(!isCaseSensitive) {
+                word = word.toLowerCase();
+            }
+            if(isIgnoringPunctuation) {
+                word = word.replaceFirst("^[^a-zA-Z]+", ""); //removes all leading non-alpha characters
+                word = word.replaceAll("[^a-zA-Z]+$", ""); // removes all trailing non-alpha characters
+            }
             fileWords.add(word);
         }
         scanner.close();
