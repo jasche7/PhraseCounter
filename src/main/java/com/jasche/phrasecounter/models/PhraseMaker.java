@@ -16,6 +16,6 @@ public class PhraseMaker {
     private String text;
     private int minOccurrences;
     private int maxPhraseLength;
-    private boolean isCaseSensitive;
-    private boolean isIgnoringPunctuation;
+    private boolean caseSensitive;
+    private boolean ignoringPunctuation;
 }
