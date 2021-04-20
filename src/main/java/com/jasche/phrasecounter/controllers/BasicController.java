@@ -3,6 +3,7 @@ package com.jasche.phrasecounter.controllers;
 import com.jasche.phrasecounter.models.PhraseMaker;
 import com.jasche.phrasecounter.services.FileOpener;
 import com.jasche.phrasecounter.services.PhraseService;
+import static com.jasche.phrasecounter.output.MyLogger.LOGGER;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,6 +34,9 @@ public class BasicController {
     @ResponseBody
     public ResponseEntity<Map<String, Integer>> createProduct(@RequestBody PhraseMaker phraseMaker) {
         Scanner scanner = new Scanner(phraseMaker.getText());
+
+        String requestLog = phraseMaker.toString();
+        LOGGER.info(requestLog);
 
         // creates list of strings from text field, also passing flags for case sensitive and ignoring punctuation
         // at the end of a word
