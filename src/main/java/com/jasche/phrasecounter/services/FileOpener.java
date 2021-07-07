@@ -47,8 +47,8 @@ public class  FileOpener {
                 word = word.toLowerCase();
             }
             if(isIgnoringPunctuation) {
-                word = word.replaceFirst("^[^a-zA-Z]+", ""); //removes all leading non-alpha characters
-                word = word.replaceAll("[^a-zA-Z]+$", ""); // removes all trailing non-alpha characters
+                word = word.replaceFirst("^[^a-zA-Z0-9]+", ""); //removes all leading non-alphanumeric characters
+                word = word.replaceAll("[^a-zA-Z0-9]+$", ""); // removes all trailing non-alphanumeric characters
             }
             fileWords.add(word);
         }

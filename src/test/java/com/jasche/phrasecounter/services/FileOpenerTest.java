@@ -52,11 +52,11 @@ class FileOpenerTest {
 
             @BeforeEach
             void setUp() {
-                scanner = new Scanner("I am 'testing' that readWords can read...");
-                testList = List.of("I", "am", "'testing'", "that", "readWords", "can", "read...");
-                testListNCS = List.of("i", "am", "'testing'", "that", "readwords", "can", "read...");
-                testListNP = List.of("I", "am", "testing", "that", "readWords", "can", "read");
-                testListBoth = List.of("i", "am", "testing", "that", "readwords", "can", "read");
+                scanner = new Scanner("I am 'testing' that readWords can read... with 0-numbers-0 -normally-.");
+                testList = List.of("I", "am", "'testing'", "that", "readWords", "can", "read...", "with", "0-numbers-0", "-normally-.");
+                testListNCS = List.of("i", "am", "'testing'", "that", "readwords", "can", "read...", "with", "0-numbers-0", "-normally-.");
+                testListNP = List.of("I", "am", "testing", "that", "readWords", "can", "read", "with", "0-numbers-0", "normally");
+                testListBoth = List.of("i", "am", "testing", "that", "readwords", "can", "read", "with", "0-numbers-0", "normally");
             }
 
             @DisplayName("Then a list can be created with those words")

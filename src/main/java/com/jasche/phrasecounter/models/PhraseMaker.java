@@ -9,7 +9,7 @@ import lombok.Data;
  * minOccurrences - minimum number of occurrences for a phrase to be included
  * maxPhraseLength - maximum number of words to be included in a phrase
  * isCaseSensitive - if false, ignore capitalization
- * isIgnoringPunctuation - if true, omit .,!?;: at the end of words
+ * isIgnoringPunctuation - if true, omit non-alphanumeric at the start and end of words
  */
 @Data
 public class PhraseMaker {
