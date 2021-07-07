@@ -12,8 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PhraseCounter {
 
     /**
-     * Main function. Required first arg is filename, followed by two optional args for
-     * minimum occurrences and maximum phrase length.
+     * Main function for starting SpringApplication.
      * @param args  CLI arguments
      */
     public static void main(String[] args) {
